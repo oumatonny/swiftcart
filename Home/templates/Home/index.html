@@ -1,0 +1,42 @@
+{% extends "Home/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+         
+    
+        {% for product in products %}
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="150" src="{{ product.image.url }}" alt="{{ product.name }}"
+                aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
+                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                  dy=".3em"></text>
+            </img>
+
+              <div class="card-body">
+                <strong class='mx-4'>{{ product.name }}</strong> <span class = "text-warning fa fa-star checked"></span> <span class = "text-warning fa fa-star checked"></span> <span class = "text-warning fa fa-star"></span>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a  class="btn btn-sm btn-outline-success" href="{% url 'add_to_cart' product_id=product.id %}">Add to Cart</a>
+                  </div>
+                  <strong class="text-muted">${{ product.price }}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    {% endblock content %}
